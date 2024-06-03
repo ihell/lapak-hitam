@@ -29,8 +29,8 @@ const app = initializeApp(firebaseConfig);
 const db = getFirestore(app);
 
 //fungsi untuk mengambil daftar produk dari firebase
-export async function ambilDaftarPembeli() {
-  const refDokumen = collection(db, "pembeli");
+export async function ambilDaftarProduk() {
+  const refDokumen = collection(db, "produk");
   const kueri = query(refDokumen, orderBy("nama"));
   const cuplikanKueri = await getDocs(kueri);
 
@@ -39,8 +39,8 @@ export async function ambilDaftarPembeli() {
     hasil.push({
       id: dok.id,
       nama: dok.data().nama,
-      alamat: dok.data().alamat,
-      noTlpn: dok.data().noTlpn,
+      harga: dok.data().harga,
+      stok: dok.data().stok,
     });
   });
 
